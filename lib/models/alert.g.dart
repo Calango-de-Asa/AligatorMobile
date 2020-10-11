@@ -24,10 +24,42 @@ mixin _$Alert on _Alert, Store {
     });
   }
 
+  final _$createdAtom = Atom(name: '_Alert.created');
+
+  @override
+  DateTime get created {
+    _$createdAtom.reportRead();
+    return super.created;
+  }
+
+  @override
+  set created(DateTime value) {
+    _$createdAtom.reportWrite(value, super.created, () {
+      super.created = value;
+    });
+  }
+
+  final _$postedByAtom = Atom(name: '_Alert.postedBy');
+
+  @override
+  Person get postedBy {
+    _$postedByAtom.reportRead();
+    return super.postedBy;
+  }
+
+  @override
+  set postedBy(Person value) {
+    _$postedByAtom.reportWrite(value, super.postedBy, () {
+      super.postedBy = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-message: ${message}
+message: ${message},
+created: ${created},
+postedBy: ${postedBy}
     ''';
   }
 }

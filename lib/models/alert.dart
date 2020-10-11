@@ -10,7 +10,7 @@ abstract class _Alert with Store {
   String message = '';
 
   @observable
-  DateTime until = DateTime.now();
+  DateTime created = DateTime.now();
 
   @observable
   Person postedBy = Person();

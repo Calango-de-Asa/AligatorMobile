@@ -5,7 +5,7 @@ main() {
   test('the default constructor should returned a not nulled object', () {
     final Alert alert = Alert();
     expect(alert.message, isNotNull);
-    expect(alert.until, isNotNull);
+    expect(alert.created, isNotNull);
     expect(alert.postedBy, isNotNull);
   });
 }
