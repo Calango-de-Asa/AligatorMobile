@@ -10,7 +10,6 @@ abstract class _DashBoardController with Store {
 
   @action
   void onTapIcon(int nextIndex) {
-    print(nextIndex);
     this.pageIndex = nextIndex;
   }
 }
