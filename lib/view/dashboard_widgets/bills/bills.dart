@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bill_box.dart';
+import '../widgets/dashboard_list.dart';
 
 class Bills extends StatelessWidget {
   @override
@@ -11,18 +12,12 @@ class Bills extends StatelessWidget {
         _billsList(),
       ]);
 
-  ListView _billsList() {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemBuilder: (_, index) => BillBox(),
-      itemCount: 10,
-    );
-  }
-
   Row _title() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text("Aligator"))],
     );
   }
+
+  Widget _billsList() => DashBoardList(itemBuilder: (_, __) => BillBox());
 }
