@@ -1,3 +1,4 @@
+import 'package:AligatorMobile/view/dashboard_widgets/widgets/dashboard_list.dart';
 import 'package:flutter/material.dart';
 import 'alert_box.dart';
 
@@ -11,7 +12,7 @@ class Alerts extends StatelessWidget {
     return Column(
       children: [
         _title(),
-        _alertList(),
+        Expanded(child: _alertList()),
       ],
     );
   }
@@ -23,11 +24,7 @@ class Alerts extends StatelessWidget {
     );
   }
 
-  Widget _alertList() => ListView.builder(
-      itemBuilder: (_, __) => Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-            child: AlertBox(),
-          ),
-      shrinkWrap: true,
-      itemCount: 10);
+  Widget _alertList() => DashBoardList(
+        itemBuilder: (_, __) => AlertBox(),
+      );
 }

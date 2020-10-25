@@ -1,5 +1,4 @@
 import 'package:AligatorMobile/view/dashboard_controller.dart';
-import 'package:AligatorMobile/view/dashboard_widgets/bills.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills/bills.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/tasks.dart';
 import 'package:flutter/material.dart';

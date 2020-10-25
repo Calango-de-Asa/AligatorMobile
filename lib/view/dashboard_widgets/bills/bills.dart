@@ -9,7 +9,7 @@ class Bills extends StatelessWidget {
 
   Widget _body() => Column(children: [
         _title(),
-        _billsList(),
+        Expanded(child: _billsList()),
       ]);
 
   Row _title() {
