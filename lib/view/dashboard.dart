@@ -1,6 +1,10 @@
 import 'package:AligatorMobile/view/dashboard_controller.dart';
+<<<<<<< Updated upstream
 import 'package:AligatorMobile/view/dashboard_widgets/alerts.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills.dart';
+=======
+import 'package:AligatorMobile/view/dashboard_widgets/bills/bills.dart';
+>>>>>>> Stashed changes
 import 'package:AligatorMobile/view/dashboard_widgets/tasks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
