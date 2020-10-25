@@ -25,7 +25,25 @@ class BillBox extends StatelessWidget {
                 children: [Text('Pessoa:'), Text('Bla Bla')],
               ),
               Row(
-                children: [Text("Time: Tick Tack")],
+                children: [
+                  Text("Time: Tick Tack"),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Checkbox(value: false, onChanged: (_) => {}),
+                            Text('Pago'),
+                          ],
+                        ),
+                        Row(
+                          children: [Icon(Icons.person), Text('Fulano')],
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

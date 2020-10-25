@@ -25,7 +25,9 @@ class AlertBox extends StatelessWidget {
                 children: [Text('Pessoa:'), Text('Bla Bla')],
               ),
               Row(
-                children: [Text("Time: Tick Tack")],
+                children: [
+                  Text("Time: Tick Tack"),
+                ],
               ),
             ],
           ),
