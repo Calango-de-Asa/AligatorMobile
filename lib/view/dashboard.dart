@@ -1,3 +1,4 @@
+import 'package:AligatorMobile/view/dashboard_widgets/alerts/alert_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:AligatorMobile/view/dashboard_controller.dart';
@@ -24,7 +25,7 @@ class DashBoard extends StatelessWidget {
   final DashBoardController _dbc;
 
   final List<Widget> _screens = [
-    Alerts(),
+    Alerts(AlertController()),
     Bills(),
     Tasks(),
   ];
@@ -45,13 +46,7 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          Navigator.push(
-              context,
-              transparentPageRoute(
-                nextPage: _upserts[this._dbc.pageIndex],
-              ));
-        }),
+        floatingActionButton: _floatinActionButton(context),
         bottomNavigationBar: BottomNavigationBar(
           items: this.items,
           currentIndex: this._dbc.pageIndex,
@@ -61,4 +56,14 @@ class DashBoard extends StatelessWidget {
       ),
     );
   }
+
+  _floatinActionButton(context) => FloatingActionButton(
+      onPressed: () {
+        Navigator.push(
+            context,
+            transparentPageRoute(
+              nextPage: _upserts[this._dbc.pageIndex],
+            ));
+      },
+      child: Icon(Icons.add));
 }

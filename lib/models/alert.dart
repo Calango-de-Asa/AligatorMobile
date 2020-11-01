@@ -6,8 +6,14 @@ part 'alert.g.dart';
 class Alert = _Alert with _$Alert;
 
 abstract class _Alert with Store {
+  _Alert({
+    this.message = '',
+    this.created,
+    this.postedBy,
+  });
+
   @observable
-  String message = '';
+  String message;
 
   @observable
   DateTime created = DateTime.now();

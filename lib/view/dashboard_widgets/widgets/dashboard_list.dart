@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 typedef Widget ItemBuilder(BuildContext b, int index);
 
 class DashBoardList extends StatelessWidget {
-  DashBoardList({this.itemBuilder});
+  DashBoardList({this.itemBuilder, this.itemsCount = 0});
 
   final ItemBuilder itemBuilder;
+  final int itemsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class DashBoardList extends StatelessWidget {
         padding: const EdgeInsets.only(right: 20.0, left: 20.0),
         child: this.itemBuilder(b, i),
       ),
-      itemCount: 10,
+      itemCount: this.itemsCount,
     );
   }
 }

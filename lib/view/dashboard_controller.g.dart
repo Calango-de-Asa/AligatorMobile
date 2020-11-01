@@ -28,7 +28,7 @@ mixin _$DashBoardController on _DashBoardController, Store {
       ActionController(name: '_DashBoardController');
 
   @override
-  void onTapIcon(dynamic nextIndex) {
+  void onTapIcon(int nextIndex) {
     final _$actionInfo = _$_DashBoardControllerActionController.startAction(
         name: '_DashBoardController.onTapIcon');
     try {
