@@ -1,24 +1,11 @@
+import 'package:AligatorMobile/view/dashboard_widgets/widgets/floating_box.dart';
 import 'package:flutter/material.dart';
 
 class AlertUpsert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return _roundedBorders();
+    return FloatingBox(_body());
   }
-
-  Container _roundedBorders() {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(color: Colors.black, blurRadius: 2, spreadRadius: 1)
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      child: _paddingBox(),
-    );
-  }
-
-  Padding _paddingBox() => Padding(padding: EdgeInsets.all(20), child: _body());
 
   Column _body() {
     return Column(children: [
