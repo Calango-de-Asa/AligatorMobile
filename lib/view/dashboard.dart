@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:AligatorMobile/view/dashboard_controller.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills/bills.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/bills/bill_upsert.dart';
+
 import 'package:AligatorMobile/view/dashboard_widgets/tasks/tasks.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/tasks/task_upsert.dart';
 
@@ -29,7 +31,7 @@ class DashBoard extends StatelessWidget {
 
   final List<Widget> _upserts = [
     AlertUpsert(),
-    Bills(),
+    BillUpsert(),
     TaskUpsert(),
   ];
 
