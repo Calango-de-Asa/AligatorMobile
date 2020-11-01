@@ -1,4 +1,4 @@
-import 'package:AligatorMobile/view/dashboard_widgets/widgets/menu_item_box.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/widgets/floating_box.dart';
 import 'package:flutter/material.dart';
 
 class BillBox extends StatelessWidget {
