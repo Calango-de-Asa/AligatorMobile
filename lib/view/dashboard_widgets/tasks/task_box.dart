@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class TaskBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MenuItemBox(
+    return FloatingBox(
       Column(
         children: [
           Row(

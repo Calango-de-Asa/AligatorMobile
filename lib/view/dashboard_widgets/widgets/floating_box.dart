@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 
-class MenuItemBox extends StatelessWidget {
+class FloatingBox extends StatelessWidget {
   final Widget _child;
+  final EdgeInsets externalPadding;
+  final EdgeInsets internalPadding;
 
-  MenuItemBox(this._child);
+  FloatingBox(
+    this._child, {
+    this.externalPadding = const EdgeInsets.all(6.0),
+    this.internalPadding = const EdgeInsets.all(10.0),
+  });
 
   @override
   Widget build(BuildContext context) => _extenalPadding();
 
   Padding _extenalPadding() => Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: this.externalPadding,
         child: _boxShadow(),
       );
 
@@ -31,7 +37,7 @@ class MenuItemBox extends StatelessWidget {
   }
 
   Padding _internalPadding() => Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: this.internalPadding,
         child: _child,
       );
 }
