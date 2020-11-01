@@ -1,6 +1,7 @@
 import 'package:AligatorMobile/view/dashboard_controller.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills/bills.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/tasks/tasks.dart';
+import 'package:AligatorMobile/view/utils/transparent_page_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -21,6 +22,12 @@ class DashBoard extends StatelessWidget {
     Tasks(),
   ];
 
+  final List<Widget> _upserts = [
+    Alerts(),
+    Bills(),
+    Tasks(),
+  ];
+
   final List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(icon: Icon(Icons.add_alert), label: 'avisos'),
     BottomNavigationBarItem(icon: Icon(Icons.add_alert), label: 'contas'),
@@ -31,6 +38,13 @@ class DashBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) => Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          Navigator.push(
+              context,
+              transparentPageRoute(
+                nextPage: _upserts[this._dbc.pageIndex],
+              ));
+        }),
         bottomNavigationBar: BottomNavigationBar(
           items: this.items,
           currentIndex: this._dbc.pageIndex,

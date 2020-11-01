@@ -8,7 +8,10 @@ class AlertBox extends StatelessWidget {
       Column(
         children: [
           Row(
-            children: [Text('Pessoa:'), Text('Bla Bla')],
+            children: [
+              Text('Pessoa:'),
+              Text('Bla Bla'),
+            ],
           ),
           Row(
             children: [
