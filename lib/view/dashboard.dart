@@ -1,11 +1,14 @@
+import 'package:flutter/material.dart';
+
 import 'package:AligatorMobile/view/dashboard_controller.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills/bills.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/tasks/tasks.dart';
-import 'package:AligatorMobile/view/utils/transparent_page_route.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/alerts/alerts.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/alerts/upsert_alert.dart';
 
-import 'dashboard_widgets/alerts/alerts.dart';
+import 'package:AligatorMobile/view/utils/transparent_page_route.dart';
+
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class DashBoard extends StatelessWidget {
   factory DashBoard() {
@@ -23,7 +26,7 @@ class DashBoard extends StatelessWidget {
   ];
 
   final List<Widget> _upserts = [
-    Alerts(),
+    UpsertAlert(),
     Bills(),
     Tasks(),
   ];

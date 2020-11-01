@@ -6,7 +6,7 @@ class DashBoardController = _DashBoardController with _$DashBoardController;
 
 abstract class _DashBoardController with Store {
   @observable
-  int pageIndex = 2;
+  int pageIndex = 0;
 
   @action
   void onTapIcon(int nextIndex) {
