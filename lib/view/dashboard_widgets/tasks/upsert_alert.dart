@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class UpsertAlert extends StatelessWidget {
+class UpsertTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _roundedBorders();
