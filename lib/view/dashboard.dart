@@ -17,24 +17,31 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 class DashBoard extends StatelessWidget {
   factory DashBoard() {
-    return DashBoard._(DashBoardController());
+    final List _controllers = [AlertController()];
+    final List<Widget> _screens = [
+      Alerts(_controllers[0]),
+      Bills(),
+      Tasks(),
+    ];
+    final List<Widget> _upserts = [
+      AlertUpsert(_controllers[0]),
+      BillUpsert(),
+      TaskUpsert(),
+    ];
+    return DashBoard._(
+      DashBoardController(),
+      _screens,
+      _upserts,
+    );
   }
 
-  DashBoard._(this._dbc);
+  DashBoard._(this._dbc, this._screens, this._upserts);
 
   final DashBoardController _dbc;
 
-  final List<Widget> _screens = [
-    Alerts(AlertController()),
-    Bills(),
-    Tasks(),
-  ];
+  final List<Widget> _screens;
 
-  final List<Widget> _upserts = [
-    AlertUpsert(),
-    BillUpsert(),
-    TaskUpsert(),
-  ];
+  final List<Widget> _upserts;
 
   final List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(icon: Icon(Icons.add_alert), label: 'avisos'),

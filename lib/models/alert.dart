@@ -17,10 +17,25 @@ abstract class _Alert with Store {
 
   @observable
   String message;
+  @action
+  Alert setMessage(String message) {
+    this.message = message;
+    return this;
+  }
 
   @observable
   DateTime created;
+  @action
+  Alert setCreated(DateTime created) {
+    this.created = created;
+    return this;
+  }
 
   @observable
   Person postedBy;
+  @action
+  Alert setPostedBy(Person postedBy) {
+    this.postedBy = postedBy;
+    return this;
+  }
 }
