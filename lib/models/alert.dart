@@ -10,14 +10,17 @@ abstract class _Alert with Store {
     this.message = '',
     this.created,
     this.postedBy,
-  });
+  }) {
+    this.created = DateTime.now();
+    this.postedBy = Person();
+  }
 
   @observable
   String message;
 
   @observable
-  DateTime created = DateTime.now();
+  DateTime created;
 
   @observable
-  Person postedBy = Person();
+  Person postedBy;
 }

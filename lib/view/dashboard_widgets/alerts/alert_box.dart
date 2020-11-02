@@ -29,10 +29,12 @@ class AlertBox extends StatelessWidget {
   }
 
   Row _postTime() {
+    print(this._alert);
+    print(this._alert.created);
     return Row(
       children: [
         Text("Time:"),
-        Text(this._alert.created.toString()),
+        Text(this._alert.created.year.toString()),
       ],
     );
   }
