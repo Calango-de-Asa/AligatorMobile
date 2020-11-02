@@ -1,7 +1,14 @@
+import 'package:AligatorMobile/models/alert.dart';
+import 'package:AligatorMobile/models/bill.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/bills/bill_controller.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/widgets/floating_box.dart';
 import 'package:flutter/material.dart';
 
 class BillUpsert extends StatelessWidget {
+  BillController _controller;
+
+  BillUpsert(this._controller);
+
   @override
   Widget build(BuildContext context) {
     return FloatingBox(_body());
@@ -67,7 +74,11 @@ class BillUpsert extends StatelessWidget {
       Expanded(
         child: Container(),
       ),
-      RaisedButton(onPressed: () => {}, child: Text('Concluir'))
+      RaisedButton(
+          onPressed: () => this._controller.addBill(_buildBill()),
+          child: Text('Concluir'))
     ]);
   }
+
+  Bill _buildBill() => Bill().setAlert(Alert().setMessage('blaz'));
 }

@@ -42,13 +42,13 @@ mixin _$Bill on _Bill, Store {
   final _$paidByAtom = Atom(name: '_Bill.paidBy');
 
   @override
-  Person get paidBy {
+  List<Person> get paidBy {
     _$paidByAtom.reportRead();
     return super.paidBy;
   }
 
   @override
-  set paidBy(Person value) {
+  set paidBy(List<Person> value) {
     _$paidByAtom.reportWrite(value, super.paidBy, () {
       super.paidBy = value;
     });
@@ -67,6 +67,52 @@ mixin _$Bill on _Bill, Store {
     _$priceAtom.reportWrite(value, super.price, () {
       super.price = value;
     });
+  }
+
+  final _$_BillActionController = ActionController(name: '_Bill');
+
+  @override
+  Bill setAlert(Alert alert) {
+    final _$actionInfo =
+        _$_BillActionController.startAction(name: '_Bill.setAlert');
+    try {
+      return super.setAlert(alert);
+    } finally {
+      _$_BillActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Bill setPaid(bool paid) {
+    final _$actionInfo =
+        _$_BillActionController.startAction(name: '_Bill.setPaid');
+    try {
+      return super.setPaid(paid);
+    } finally {
+      _$_BillActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Bill setPaidBy(List<Person> paidBy) {
+    final _$actionInfo =
+        _$_BillActionController.startAction(name: '_Bill.setPaidBy');
+    try {
+      return super.setPaidBy(paidBy);
+    } finally {
+      _$_BillActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Bill setPrice(double price) {
+    final _$actionInfo =
+        _$_BillActionController.startAction(name: '_Bill.setPrice');
+    try {
+      return super.setPrice(price);
+    } finally {
+      _$_BillActionController.endAction(_$actionInfo);
+    }
   }
 
   @override

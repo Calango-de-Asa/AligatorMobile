@@ -24,6 +24,20 @@ mixin _$AlertController on _AlertController, Store {
     });
   }
 
+  final _$_AlertControllerActionController =
+      ActionController(name: '_AlertController');
+
+  @override
+  dynamic addAlert(Alert alert) {
+    final _$actionInfo = _$_AlertControllerActionController.startAction(
+        name: '_AlertController.addAlert');
+    try {
+      return super.addAlert(alert);
+    } finally {
+      _$_AlertControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

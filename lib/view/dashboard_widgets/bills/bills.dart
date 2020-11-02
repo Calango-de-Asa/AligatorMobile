@@ -1,8 +1,14 @@
+import 'package:AligatorMobile/models/bill.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/bills/bill_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'bill_box.dart';
 import '../widgets/dashboard_list.dart';
 
 class Bills extends StatelessWidget {
+  final BillController _controller;
+  Bills(this._controller);
+
   @override
   Widget build(BuildContext context) =>
       Scaffold(body: SafeArea(child: _body()));
@@ -19,5 +25,12 @@ class Bills extends StatelessWidget {
     );
   }
 
-  Widget _billsList() => DashBoardList(itemBuilder: (_, __) => BillBox());
+  Widget _billsList() => Observer(builder: (_) {
+        List<Bill> bills = this._controller.bills.data;
+        return bills != null
+            ? DashBoardList(
+                itemBuilder: (_, index) => BillBox(bills[index]),
+                itemsCount: bills.length)
+            : Center(child: CircularProgressIndicator());
+      });
 }

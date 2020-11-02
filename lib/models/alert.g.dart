@@ -54,6 +54,41 @@ mixin _$Alert on _Alert, Store {
     });
   }
 
+  final _$_AlertActionController = ActionController(name: '_Alert');
+
+  @override
+  Alert setMessage(String message) {
+    final _$actionInfo =
+        _$_AlertActionController.startAction(name: '_Alert.setMessage');
+    try {
+      return super.setMessage(message);
+    } finally {
+      _$_AlertActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Alert setCreated(DateTime created) {
+    final _$actionInfo =
+        _$_AlertActionController.startAction(name: '_Alert.setCreated');
+    try {
+      return super.setCreated(created);
+    } finally {
+      _$_AlertActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Alert setPostedBy(Person postedBy) {
+    final _$actionInfo =
+        _$_AlertActionController.startAction(name: '_Alert.setPostedBy');
+    try {
+      return super.setPostedBy(postedBy);
+    } finally {
+      _$_AlertActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

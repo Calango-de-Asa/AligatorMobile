@@ -1,4 +1,5 @@
 import 'package:AligatorMobile/view/dashboard_widgets/alerts/alert_controller.dart';
+import 'package:AligatorMobile/view/dashboard_widgets/bills/bill_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:AligatorMobile/view/dashboard_controller.dart';
@@ -17,15 +18,15 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 class DashBoard extends StatelessWidget {
   factory DashBoard() {
-    final List _controllers = [AlertController()];
+    final List _controllers = [AlertController(), BillController()];
     final List<Widget> _screens = [
       Alerts(_controllers[0]),
-      Bills(),
+      Bills(_controllers[1]),
       Tasks(),
     ];
     final List<Widget> _upserts = [
       AlertUpsert(_controllers[0]),
-      BillUpsert(),
+      BillUpsert(_controllers[1]),
       TaskUpsert(),
     ];
     return DashBoard._(
