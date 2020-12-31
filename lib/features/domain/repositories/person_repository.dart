@@ -4,4 +4,5 @@ import 'package:AligatorMobile/core/errors/failure.dart';
 
 abstract class PersonRepository {
     Future<Either<Failure, Person>> getPersonByName(String name);
+    Future<Either<Failure, Person>> getLoggedPerson();
 }

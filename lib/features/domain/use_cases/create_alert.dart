@@ -16,7 +16,7 @@ class CreateAlert implements UseCase<Success, CreateAlertParams> {
   @override
   Future<Either<Failure, Success>> call(CreateAlertParams params) => this
       ._personRepository
-      .getPersonByName(params.postedBy)
+      .getLoggedPerson()
       .then((either) => either.fold(
             (error) => Left(error),
             (person) => this

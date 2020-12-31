@@ -34,7 +34,7 @@ main() {
     final person = Person(name: personName);
 
     test('should create and alert', () async {
-      when(personRepository.getPersonByName(any))
+      when(personRepository.getLoggedPerson())
           .thenAnswer((_) async => Right(person));
       when(alertRepository.createAlert(any, any, any))
           .thenAnswer((_) async => Right(Success()));
@@ -43,7 +43,7 @@ main() {
 
       expect(answer, equals(Right(Success())));
 
-      verify(personRepository.getPersonByName(personName)).called(1);
+      verify(personRepository.getLoggedPerson()).called(1);
       verifyNoMoreInteractions(personRepository);
 
       verify(alertRepository.createAlert(params.message, params.postedAt, person)).called(1);
