@@ -1,13 +1,20 @@
 import 'package:AligatorMobile/models/alert.dart';
 import 'package:AligatorMobile/models/bill.dart';
+import 'package:AligatorMobile/models/person.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/bills/bill_controller.dart';
 import 'package:AligatorMobile/view/dashboard_widgets/widgets/floating_box.dart';
 import 'package:flutter/material.dart';
 
 class BillUpsert extends StatelessWidget {
-  BillController _controller;
+  final BillController _controller;
+  final TextEditingController _messageController;
 
-  BillUpsert(this._controller);
+  factory BillUpsert(controller) {
+    TextEditingController messageController = TextEditingController();
+    return BillUpsert._(controller, messageController);
+  }
+
+  BillUpsert._(this._controller, this._messageController);
 
   @override
   Widget build(BuildContext context) {
@@ -80,5 +87,6 @@ class BillUpsert extends StatelessWidget {
     ]);
   }
 
-  Bill _buildBill() => Bill().setAlert(Alert().setMessage('blaz'));
+  Bill _buildBill() =>
+      Bill().setAlert(Alert().setMessage('blaz')).setPaidBy([Person()]);
 }
