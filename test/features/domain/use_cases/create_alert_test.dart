@@ -1,16 +1,53 @@
+import 'package:AligatorMobile/core/use_cases/success.dart';
+import 'package:AligatorMobile/features/domain/entities/person.dart';
 import 'package:AligatorMobile/features/domain/repositories/alert_repository.dart';
+import 'package:AligatorMobile/features/domain/repositories/person_repository.dart';
 import 'package:AligatorMobile/features/domain/use_cases/create_alert.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class AlertRepositoryMock extends Mock implements AlertRepository {}
 
-main() {
-    AlertRepository alertRepository;
-    CreateAlert createAlert;
+class PersonRepositoryMock extends Mock implements PersonRepository {}
 
-    setUp(() {
-        alertRepository = AlertRepositoryMock();
-        createAlert = CreateAlert();
+main() {
+  AlertRepository alertRepository;
+  PersonRepository personRepository;
+  CreateAlert createAlert;
+
+  setUp(() {
+    alertRepository = AlertRepositoryMock();
+    personRepository = PersonRepositoryMock();
+    createAlert = CreateAlert(alertRepository, personRepository);
+  });
+
+  group('CreateAlert', () {
+    final personName = 'George';
+
+    final params = CreateAlertParams(
+      message: 'Bilu bilau',
+      postedAt: DateTime.utc(2000),
+      postedBy: personName,
+    );
+
+    final person = Person(name: personName);
+
+    test('should create and alert', () async {
+      when(personRepository.getPersonByName(any))
+          .thenAnswer((_) async => Right(person));
+      when(alertRepository.createAlert(any, any, any))
+          .thenAnswer((_) async => Right(Success()));
+
+      final answer = await createAlert(params);
+
+      expect(answer, equals(Right(Success())));
+
+      verify(personRepository.getPersonByName(personName)).called(1);
+      verifyNoMoreInteractions(personRepository);
+
+      verify(alertRepository.createAlert(params.message, params.postedAt, person)).called(1);
+      verifyNoMoreInteractions(alertRepository);
     });
+  });
 }
