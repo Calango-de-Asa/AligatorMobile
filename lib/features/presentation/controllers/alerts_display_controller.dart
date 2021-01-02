@@ -17,10 +17,12 @@ abstract class _AlertsDisplayController with Store {
   _AlertsDisplayController(this._getAllAlerts);
 
   Future<void> fetchData() async {
-    await this._getAllAlerts(NoParams()).then((awnswer) => awnswer.fold(
-          this._unsuccessfulFetch,
-          this._sucessfulFetch,
-        ));
+    this._setAlertState(Loading());
+    final awnswer = await this._getAllAlerts(NoParams());
+    awnswer.fold(
+      this._unsuccessfulFetch,
+      this._sucessfulFetch,
+    );
   }
 
   _sucessfulFetch(List<Alert> alerts) {

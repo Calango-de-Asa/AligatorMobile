@@ -7,6 +7,8 @@ abstract class AlertsState extends Equatable {
   List<Object> get props => [];
 }
 
+class Loading extends AlertsState {}
+
 class Loaded extends AlertsState {
   final List<Alert> alerts;
 

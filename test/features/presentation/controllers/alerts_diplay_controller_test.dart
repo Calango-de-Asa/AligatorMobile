@@ -36,6 +36,8 @@ main() {
     test('should get a loaded state with a empty array, without a fetch', () {
       final alert = alertsDisplayController.alertsState;
 
+      verifyNever(getAllAlerts(any));
+
       expect(alert, isInstanceOf<Loaded>());
       if (alert is Loaded) expect(alert.alerts, []);
     });
@@ -49,6 +51,9 @@ main() {
 
       expect(alert, isInstanceOf<Loaded>());
       if (alert is Loaded) expect(alert.alerts, equals(alerts));
+
+      verify(getAllAlerts(any)).called(1);
+      verifyNoMoreInteractions(getAllAlerts);
     });
 
     test('should state be error when error in fetching', () async {
@@ -59,7 +64,29 @@ main() {
       final alert = alertsDisplayController.alertsState;
 
       expect(alert, isInstanceOf<Error>());
+
+      verify(getAllAlerts(any)).called(1);
+      verifyNoMoreInteractions(getAllAlerts);
     });
 
+    test('should set Loading with fetching the data', () async {
+      when(getAllAlerts(any)).thenAnswer((_) async {
+        await Future.delayed(Duration(seconds: 2));
+        return Right(alerts);
+      });
+
+      final future = alertsDisplayController.fetchData();
+
+      var alert = alertsDisplayController.alertsState;
+      expect(alert, isInstanceOf<Loading>());
+
+      await future;
+      alert = alertsDisplayController.alertsState;
+
+      expect(alert, isInstanceOf<Loaded>());
+
+      verify(getAllAlerts(any)).called(1);
+      verifyNoMoreInteractions(getAllAlerts);
+    });
   });
 }
