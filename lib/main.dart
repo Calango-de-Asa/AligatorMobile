@@ -10,6 +10,8 @@ import 'features/presentation/controllers/alerts_display_controller.dart';
 import 'features/presentation/pages/alerts_display.dart';
 import 'package:mockito/mockito.dart';
 
+import 'features/presentation/pages/create_alert_display.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -38,5 +40,5 @@ alertDisplay() {
             postedBy: Person(name: 'Joca')),
       ]));
   var alertDisplay = AlertsDisplayController(useCase);
-  return AlertsDisplay(alertDisplay);
+  return CreateAlertDisplay();
 }
