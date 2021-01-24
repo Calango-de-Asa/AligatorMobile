@@ -7,39 +7,35 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +3 lib/core/errors/failure.dart
-badd +15 lib/models/alert.dart
-badd +20 lib/models/bill.dart
-badd +2 lib/models/person.dart
-badd +21 lib/models/task.dart
-badd +4 lib/features/domain/entities/alert.dart
-badd +8 lib/features/domain/entities/bill.dart
-badd +1 lib/features/domain/entities/person.dart
-badd +12 lib/features/domain/entities/task.dart
-badd +35 test/features/domain/use_cases/create_alert_test.dart
-badd +20 lib/features/domain/use_cases/create_alert.dart
-badd +6 lib/features/domain/repositories/alert_repository.dart
-badd +4 lib/core/use_cases/use_case.dart
-badd +5 lib/core/use_cases/success.dart
-badd +5 lib/core/use_cases/no_params.dart
-badd +2 lib/features/domain/repositories/person_repository.dart
+badd +1 lib/features/presentation/pages/create_alert_display.dart
+badd +1 __Flutter_Output__
+badd +3 lib/features/presentation/controllers/create_alert_controller.dart
+badd +7 lib/features/presentation/pages/alerts_display.dart
+badd +21 lib/dependency_injection.dart
+badd +12 lib/features/data/repositories/alert_repository_impl.dart
+badd +8 lib/features/data/repositories/person_repository_impl.dart
+badd +4 lib/features/presentation/controllers/alerts_display_controller.dart
+badd +0 lib/core/router/router.dart
+badd +14 lib/features/presentation/pages/splash_display.dart
+badd +62 ~/.pub-cache/hosted/pub.dartlang.org/auto_route-1.0.0-beta.7/lib/src/router/controller/routing_controller.dart
+badd +21 pubspec.yaml
+badd +2 lib/features/presentation/controllers/alerts_state.dart
+badd +16 lib/core/move/move.dart
+badd +3524 /opt/flutter/packages/flutter/lib/src/widgets/navigator.dart
+badd +35 /opt/flutter/packages/flutter/lib/src/material/page.dart
+badd +13 /opt/flutter/packages/flutter/lib/src/widgets/pages.dart
+badd +1098 /opt/flutter/packages/flutter/lib/src/widgets/routes.dart
+badd +13 lib/main.dart
 argglobal
 %argdel
-edit test/features/domain/use_cases/create_alert_test.dart
+edit lib/core/move/move.dart
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
 wincmd _ | wincmd |
 split
 1wincmd k
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
-wincmd w
+1wincmd h
 wincmd w
 wincmd w
 set nosplitbelow
@@ -49,15 +45,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 78 + 157) / 315)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 78 + 157) / 315)
-exe '3resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 78 + 157) / 315)
-exe '4resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 4resize ' . ((&columns * 236 + 157) / 315)
-exe 'vert 5resize ' . ((&columns * 78 + 157) / 315)
+exe '1resize ' . ((&lines * 35 + 37) / 74)
+exe 'vert 1resize ' . ((&columns * 129 + 129) / 258)
+exe '2resize ' . ((&lines * 35 + 37) / 74)
+exe 'vert 2resize ' . ((&columns * 128 + 129) / 258)
+exe '3resize ' . ((&lines * 36 + 37) / 74)
 argglobal
 setlocal fdm=indent
 setlocal fde=0
@@ -67,25 +59,24 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-19
+14
 normal! zo
-26
-normal! zo
-27
+16
 normal! zo
 25
 normal! zo
-33
+61
 normal! zo
-let s:l = 35 - ((24 * winheight(0) + 14) / 29)
+let s:l = 16 - ((13 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 040|
+16
+normal! 060|
 wincmd w
 argglobal
-if bufexists("lib/features/domain/repositories/alert_repository.dart") | buffer lib/features/domain/repositories/alert_repository.dart | else | edit lib/features/domain/repositories/alert_repository.dart | endif
+enew
+file __Flutter_Output__
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,17 +85,9 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-7
-normal! zo
-let s:l = 1 - ((0 * winheight(0) + 14) / 29)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 057|
 wincmd w
 argglobal
-if bufexists("lib/features/domain/entities/alert.dart") | buffer lib/features/domain/entities/alert.dart | else | edit lib/features/domain/entities/alert.dart | endif
+if bufexists("lib/features/presentation/pages/splash_display.dart") | buffer lib/features/presentation/pages/splash_display.dart | else | edit lib/features/presentation/pages/splash_display.dart | endif
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -113,63 +96,23 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 6 - ((5 * winheight(0) + 14) / 29)
+11
+normal! zo
+16
+normal! zo
+let s:l = 15 - ((14 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 0
+15
+normal! 076|
 wincmd w
-argglobal
-if bufexists("lib/features/domain/use_cases/create_alert.dart") | buffer lib/features/domain/use_cases/create_alert.dart | else | edit lib/features/domain/use_cases/create_alert.dart | endif
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-18
-normal! zo
-29
-normal! zo
-let s:l = 20 - ((19 * winheight(0) + 14) / 29)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-20
-normal! 03|
-wincmd w
-argglobal
-if bufexists("lib/features/domain/repositories/person_repository.dart") | buffer lib/features/domain/repositories/person_repository.dart | else | edit lib/features/domain/repositories/person_repository.dart | endif
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-5
-normal! zo
-let s:l = 6 - ((5 * winheight(0) + 29) / 59)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-6
-normal! 0
-wincmd w
-5wincmd w
-exe '1resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 1resize ' . ((&columns * 78 + 157) / 315)
-exe '2resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 2resize ' . ((&columns * 78 + 157) / 315)
-exe '3resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 3resize ' . ((&columns * 78 + 157) / 315)
-exe '4resize ' . ((&lines * 29 + 30) / 61)
-exe 'vert 4resize ' . ((&columns * 236 + 157) / 315)
-exe 'vert 5resize ' . ((&columns * 78 + 157) / 315)
+2wincmd w
+exe '1resize ' . ((&lines * 35 + 37) / 74)
+exe 'vert 1resize ' . ((&columns * 129 + 129) / 258)
+exe '2resize ' . ((&lines * 35 + 37) / 74)
+exe 'vert 2resize ' . ((&columns * 128 + 129) / 258)
+exe '3resize ' . ((&lines * 36 + 37) / 74)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

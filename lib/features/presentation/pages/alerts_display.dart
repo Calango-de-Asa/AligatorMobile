@@ -4,15 +4,12 @@ import 'package:AligatorMobile/features/domain/entities/alert.dart';
 import 'package:AligatorMobile/features/domain/use_cases/create_alert.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_display_controller.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_state.dart';
-import 'package:AligatorMobile/features/presentation/controllers/create_alert_controller.dart';
 import 'package:AligatorMobile/features/presentation/widgets/alert_display.dart';
 import 'package:AligatorMobile/features/presentation/widgets/circular_loading.dart';
 import 'package:AligatorMobile/features/presentation/widgets/main_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import 'create_alert_display.dart';
 
 class AlertsDisplay extends StatelessWidget {
   final AlertsDisplayController _alertDisplayController;
@@ -28,7 +25,7 @@ class AlertsDisplay extends StatelessWidget {
         child: _body(context),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => _onPressedFloatingActionButton(context),
+          onPressed: _alertDisplayController.goToCreateAlertDisplay,
           child: Icon(
             Icons.add,
             color: Colors.black,
@@ -44,14 +41,6 @@ class AlertsDisplay extends StatelessWidget {
           ),
         ],
       );
-
-  void _onPressedFloatingActionButton(BuildContext context) async {
-    await NavigationService.push((context) => CreateAlertDisplay(
-        createAlert: getIt<CreateAlert>(),
-        createAlertController: getIt<CreateAlertController>()));
-    print('poped');
-    this._alertDisplayController.fetchData();
-  }
 
   Widget alerts() => Observer(
         builder: (BuildContext context) {

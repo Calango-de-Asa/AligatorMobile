@@ -1,10 +1,15 @@
 import 'package:AligatorMobile/core/errors/failure.dart';
+import 'package:AligatorMobile/core/navigation/navigation_service.dart';
 import 'package:AligatorMobile/core/use_cases/no_params.dart';
 import 'package:AligatorMobile/features/domain/entities/alert.dart';
+import 'package:AligatorMobile/features/domain/use_cases/create_alert.dart';
 import 'package:AligatorMobile/features/domain/use_cases/get_all_alerts.dart';
+import 'package:AligatorMobile/features/presentation/pages/create_alert_display.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../dependency_injection.dart';
 import 'alerts_state.dart';
+import 'create_alert_controller.dart';
 
 part 'alerts_display_controller.g.dart';
 
@@ -32,6 +37,13 @@ abstract class _AlertsDisplayController with Store {
 
   _unsuccessfulFetch(Failure failure) =>
       this._setAlertState(Error(message: 'we get some error'));
+
+  goToCreateAlertDisplay() async {
+    await NavigationService.push((context) => CreateAlertDisplay(
+        createAlert: getIt<CreateAlert>(),
+        createAlertController: getIt<CreateAlertController>()));
+    this.fetchData();
+  }
 
   @observable
   AlertsState alertsState = Loaded(alerts: []);
