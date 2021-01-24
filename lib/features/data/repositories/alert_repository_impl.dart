@@ -7,14 +7,23 @@ import 'package:dartz/dartz.dart';
 
 class AlertRepositoryImpl extends AlertRepository {
   @override
-  Future<Either<Failure, Success>> createAlert(String message, DateTime created, Person person) {
+  Future<Either<Failure, Success>> createAlert(
+      String message, DateTime created, Person person) {
     // TODO: implement createAlert
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, List<Alert>>> getAllAlerts() {
-    // TODO: implement getAllAlerts
-    throw UnimplementedError();
+  Future<Either<Failure, List<Alert>>> getAllAlerts() async {
+    return Right([
+      Alert(
+          message: 'opa major',
+          created: DateTime.now(),
+          postedBy: Person(name: 'tu')),
+      Alert(
+          message: 'opa',
+          created: DateTime.now(),
+          postedBy: Person(name: 'ele')),
+    ]);
   }
 }

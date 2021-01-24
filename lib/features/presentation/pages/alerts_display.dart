@@ -20,6 +20,12 @@ class AlertsDisplay extends StatelessWidget {
         body: SafeArea(
           child: _body(context),
         ),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.add,
+              color: Colors.black,
+            )),
       );
 
   Widget _body(BuildContext context) => Column(

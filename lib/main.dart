@@ -2,8 +2,10 @@ import 'package:AligatorMobile/core/router/router.gr.dart';
 import 'package:flutter/material.dart';
 
 import 'core/presentation/theme.dart';
+import 'dependency_injection.dart';
 
 void main() {
+  setUpDependencyInjection();
   runApp(MyApp());
 }
 

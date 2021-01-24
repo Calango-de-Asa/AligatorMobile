@@ -5,8 +5,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'alerts_display.dart';
-
 class SplashDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,8 +12,7 @@ class SplashDisplay extends StatelessWidget {
     return Container();
   }
 
-  Future<void> _initLoad(BuildContext context) {
-    setUpDependencyInjection();
+  void _initLoad(BuildContext context) {
     AutoRouter.of(context).push(
         AlertsRoute(alertDisplayController: getIt<AlertsDisplayController>()));
   }
