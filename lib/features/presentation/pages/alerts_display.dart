@@ -1,9 +1,11 @@
+import 'package:AligatorMobile/core/router/router.gr.dart';
 import 'package:AligatorMobile/features/domain/entities/alert.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_display_controller.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_state.dart';
 import 'package:AligatorMobile/features/presentation/widgets/alert_display.dart';
 import 'package:AligatorMobile/features/presentation/widgets/circular_loading.dart';
 import 'package:AligatorMobile/features/presentation/widgets/main_title.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -21,7 +23,7 @@ class AlertsDisplay extends StatelessWidget {
           child: _body(context),
         ),
         floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () => _onPressedFloatingActionButton(context),
             child: Icon(
               Icons.add,
               color: Colors.black,
@@ -36,6 +38,10 @@ class AlertsDisplay extends StatelessWidget {
           ),
         ],
       );
+
+  void _onPressedFloatingActionButton(BuildContext context) {
+    AutoRouter.of(context).push(CreateAlertRoute());
+  }
 
   Widget alerts() => Observer(
         builder: (BuildContext context) {
