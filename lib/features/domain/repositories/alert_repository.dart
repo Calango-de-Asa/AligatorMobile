@@ -5,6 +5,7 @@ import 'package:AligatorMobile/features/domain/entities/person.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AlertRepository {
-    Future<Either<Failure, Success>> createAlert(String message, DateTime created, Person person);
-    Future<Either<Failure, List<Alert>>> getAllAlerts();
+  Future<Either<Failure, Success>> createAlert(
+      String message, DateTime created, Person person);
+  Future<Either<Failure, List<Alert>>> getAllAlerts();
 }

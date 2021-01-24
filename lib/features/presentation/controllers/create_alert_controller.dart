@@ -8,7 +8,6 @@ class CreateAlertController = _CreateAlertController
     with _$CreateAlertController;
 
 abstract class _CreateAlertController with Store {
-
   final CreateAlert _createAlert;
 
   _CreateAlertController(this._createAlert);
@@ -27,7 +26,6 @@ abstract class _CreateAlertController with Store {
     this.formState = formState;
   }
 
-  Future<void> validateForm() async {
-      this._createAlert();
-  }
+  Future<void> validateForm() =>
+      this._createAlert(CreateAlertParams(message: this.message));
 }

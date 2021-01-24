@@ -10,6 +10,10 @@ import '../../features/presentation/pages/create_alert_display.dart' as _i3;
 import '../../features/presentation/pages/splash_display.dart' as _i4;
 import '../../features/presentation/controllers/alerts_display_controller.dart'
     as _i5;
+import 'package:flutter/material.dart' as _i6;
+import '../../features/domain/use_cases/create_alert.dart' as _i7;
+import '../../features/presentation/controllers/create_alert_controller.dart'
+    as _i8;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter();
@@ -22,7 +26,12 @@ class AppRouter extends _i1.RootStackRouter {
           entry: entry, child: _i2.AlertsDisplay(route.alertDisplayController));
     },
     CreateAlertRoute.name: (entry) {
-      return _i1.AdaptivePage(entry: entry, child: _i3.CreateAlertDisplay());
+      var route = entry.routeData.as<CreateAlertRoute>();
+      return _i1.AdaptivePage(
+          entry: entry,
+          child: _i3.CreateAlertDisplay(
+              createAlert: route.createAlert,
+              createAlertController: route.createAlertController));
     },
     SplashRoute.name: (entry) {
       return _i1.AdaptivePage(entry: entry, child: _i4.SplashDisplay());
@@ -56,9 +65,19 @@ class AlertsRoute extends _i1.PageRouteInfo {
 }
 
 class CreateAlertRoute extends _i1.PageRouteInfo {
-  const CreateAlertRoute() : super(name, path: '/create-alert-display');
+  CreateAlertRoute(
+      {@_i6.required this.createAlert,
+      @_i6.required this.createAlertController})
+      : super(name, path: '/create-alert-display');
 
-  CreateAlertRoute.fromMatch(_i1.RouteMatch match) : super.fromMatch(match);
+  CreateAlertRoute.fromMatch(_i1.RouteMatch match)
+      : createAlert = null,
+        createAlertController = null,
+        super.fromMatch(match);
+
+  final _i7.CreateAlert createAlert;
+
+  final _i8.CreateAlertController createAlertController;
 
   static const String name = 'CreateAlertRoute';
 }

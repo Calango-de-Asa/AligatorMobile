@@ -1,7 +1,10 @@
 import 'package:AligatorMobile/core/router/router.gr.dart';
+import 'package:AligatorMobile/dependency_injection.dart';
 import 'package:AligatorMobile/features/domain/entities/alert.dart';
+import 'package:AligatorMobile/features/domain/use_cases/create_alert.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_display_controller.dart';
 import 'package:AligatorMobile/features/presentation/controllers/alerts_state.dart';
+import 'package:AligatorMobile/features/presentation/controllers/create_alert_controller.dart';
 import 'package:AligatorMobile/features/presentation/widgets/alert_display.dart';
 import 'package:AligatorMobile/features/presentation/widgets/circular_loading.dart';
 import 'package:AligatorMobile/features/presentation/widgets/main_title.dart';
@@ -40,7 +43,9 @@ class AlertsDisplay extends StatelessWidget {
       );
 
   void _onPressedFloatingActionButton(BuildContext context) {
-    AutoRouter.of(context).push(CreateAlertRoute());
+    AutoRouter.of(context).push(CreateAlertRoute(
+        createAlert: getIt<CreateAlert>(),
+        createAlertController: getIt<CreateAlertController>()));
   }
 
   Widget alerts() => Observer(
