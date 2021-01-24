@@ -31,9 +31,9 @@ class CreateAlertDisplay extends StatelessWidget {
           ),
           MultiLineTextFormField(
               onChanged: this.createAlertController.udpateMessage),
-          RaisedButton(onPressed: _finishButton, child: Text('Concluir'))
+          RaisedButton(
+              onPressed: createAlertController.validateForm,
+              child: Text('Concluir'))
         ],
       );
-
-  _finishButton() {}
 }

@@ -6,24 +6,16 @@ import 'package:AligatorMobile/features/domain/repositories/alert_repository.dar
 import 'package:dartz/dartz.dart';
 
 class AlertRepositoryImpl extends AlertRepository {
+  List<Alert> _alerts = [];
   @override
   Future<Either<Failure, Success>> createAlert(
-      String message, DateTime created, Person person) {
-    // TODO: implement createAlert
-    throw UnimplementedError();
+      String message, DateTime created, Person person) async {
+    _alerts.add(Alert(message: message, created: created, postedBy: person));
+    return Right(Success());
   }
 
   @override
   Future<Either<Failure, List<Alert>>> getAllAlerts() async {
-    return Right([
-      Alert(
-          message: 'opa major',
-          created: DateTime.now(),
-          postedBy: Person(name: 'tu')),
-      Alert(
-          message: 'opa',
-          created: DateTime.now(),
-          postedBy: Person(name: 'ele')),
-    ]);
+    return Right(this._alerts);
   }
 }

@@ -21,17 +21,19 @@ class AlertsDisplay extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: _body(context),
-        ),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () => _onPressedFloatingActionButton(context),
-            child: Icon(
-              Icons.add,
-              color: Colors.black,
-            )),
-      );
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: _body(context),
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () => _onPressedFloatingActionButton(context),
+          child: Icon(
+            Icons.add,
+            color: Colors.black,
+          )),
+    );
+  }
 
   Widget _body(BuildContext context) => Column(
         children: [
@@ -46,6 +48,7 @@ class AlertsDisplay extends StatelessWidget {
     AutoRouter.of(context).push(CreateAlertRoute(
         createAlert: getIt<CreateAlert>(),
         createAlertController: getIt<CreateAlertController>()));
+    this._alertDisplayController.fetchData();
   }
 
   Widget alerts() => Observer(

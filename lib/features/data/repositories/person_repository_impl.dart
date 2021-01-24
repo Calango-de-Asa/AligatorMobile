@@ -5,9 +5,8 @@ import 'package:dartz/dartz.dart';
 
 class PersonRepositoryImpl extends PersonRepository {
   @override
-  Future<Either<Failure, Person>> getLoggedPerson() {
-    // TODO: implement getLoggedPerson
-    throw UnimplementedError();
+  Future<Either<Failure, Person>> getLoggedPerson() async {
+    return Right(Person(name: 'Filho'));
   }
 
   @override
