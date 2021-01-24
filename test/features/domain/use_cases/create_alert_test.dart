@@ -27,8 +27,6 @@ main() {
 
     final params = CreateAlertParams(
       message: 'Bilu bilau',
-      postedAt: DateTime.utc(2000),
-      postedBy: personName,
     );
 
     final person = Person(name: personName);
@@ -46,7 +44,8 @@ main() {
       verify(personRepository.getLoggedPerson()).called(1);
       verifyNoMoreInteractions(personRepository);
 
-      verify(alertRepository.createAlert(params.message, params.postedAt, person)).called(1);
+      verify(alertRepository.createAlert(params.message, any, person))
+          .called(1);
       verifyNoMoreInteractions(alertRepository);
     });
   });
