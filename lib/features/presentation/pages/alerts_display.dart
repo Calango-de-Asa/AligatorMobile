@@ -43,6 +43,7 @@ class AlertsDisplay extends StatelessWidget {
           } else if (state is Error) {
             return Container();
           }
+          return null;
         },
       );
 
