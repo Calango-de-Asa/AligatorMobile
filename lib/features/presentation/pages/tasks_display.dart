@@ -8,27 +8,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class AlertsDisplay extends StatelessWidget {
+class TasksDisplay extends StatelessWidget {
   final AlertsDisplayController _alertDisplayController;
 
-  AlertsDisplay(this._alertDisplayController) {
+  TasksDisplay(this._alertDisplayController) {
     this._alertDisplayController.fetchData();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: _body(context),
-      ),
-      floatingActionButton: FloatingActionButton(
+  Widget build(BuildContext context) => Scaffold(
+        body: SafeArea(
+          child: _body(context),
+        ),
+        floatingActionButton: FloatingActionButton(
           onPressed: _alertDisplayController.goToCreateAlertDisplay,
           child: Icon(
             Icons.add,
             color: Colors.black,
-          )),
-    );
-  }
+          ),
+        ),
+      );
 
   Widget _body(BuildContext context) => Column(
         children: [
