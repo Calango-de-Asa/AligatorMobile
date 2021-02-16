@@ -11,7 +11,10 @@ class SplashDisplay extends StatelessWidget {
     return Center(child: CircularLoading());
   }
 
-  void _initLoad(BuildContext context) =>
-      Future.delayed(Duration(seconds: 5)).then((_) =>
-          NavigationService.pushReplacement((context) => TasksDisplay()));
+  Future<void> _initLoad(BuildContext context) async {
+    final alertController = AlertDisplayController();
+    Future.delayed(Duration(seconds: 5)).then((_) =>
+        NavigationService.pushReplacement(
+            (context) => TasksDisplay(alertController)));
+  }
 }

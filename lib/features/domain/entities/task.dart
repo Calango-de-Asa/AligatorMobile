@@ -8,15 +8,15 @@ class Task extends Equatable {
   final Alert alert;
   final bool done;
   final DateTime until;
-  final Person inCharger;
+  final Person inCharge;
 
   Task({
     @required this.alert,
     @required this.done,
     @required this.until,
-    @required this.inCharger,
+    @required this.inCharge,
   });
 
   @override
-  List<Object> get props => [alert, done, until, inCharger];
+  List<Object> get props => [alert, done, until, inCharge];
 }
