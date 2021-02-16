@@ -28,7 +28,7 @@ main() {
 
       final result = await getAllTasks(NoParams());
 
-      expect(result, equals(Right(result)));
+      expect(result, equals(Right(taskList)));
     });
   });
 }
